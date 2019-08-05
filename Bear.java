@@ -3,12 +3,12 @@ import java.util.*;
 
 public class Bear extends Critter {
 
-    private boolean polar;
-    private int moveCounter;
+    private boolean polar; //holds a random boolean
+    private int moveCounter; //holds the number of moves made so we can use division to figure out if it's supposed to be a / or \
 
     public Bear(boolean Polar){
         super();
-        this.polar = randomBoolean();
+        this.polar = randomBoolean(); //calls a function that returns a random boolean
     }
 
     public Color getColor(){
@@ -21,19 +21,19 @@ public class Bear extends Critter {
 
     public boolean randomBoolean(){
         Random random = new Random();
-        return random.nextBoolean();
+        return random.nextBoolean(); //returns a random boolean with the Random object type
     }
 
     public String toString(){
-        if(this.moveCounter%2 == 0){
+        if(this.moveCounter%2 == 0){ //if the mouvecount is even, return /
             return "/";
         }else{
-            return"\\";
+            return"\\"; //otherwise use the escape sequence for \
         }
     }
 
     public Action getMove(CritterInfo info){
-        moveCounter++;
+        moveCounter++; //every move, increase the turn counter
         if(info.getFront() == Neighbor.OTHER) {
             return Action.INFECT;
         }else if(info.getFront() == Neighbor.EMPTY){
